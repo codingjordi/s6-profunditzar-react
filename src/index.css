@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  body {
+    color: #242424;
+    min-height: 100vh;
+    min-width: 320px;
+  }
+
+  h1 {
+    @apply text-5xl leading-5;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.hero-img {
+  background-image: url('/public/hero-background.jpg');
+  background-size: cover;
+}
