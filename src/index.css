@@ -18,6 +18,10 @@
     @apply text-5xl leading-5;
   }
 
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
   img {
     @apply max-w-full h-auto;
   }

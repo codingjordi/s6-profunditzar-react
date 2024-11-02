@@ -2,6 +2,8 @@ import React from 'react'
 import CardList from '../CardList'
 import { serveis } from '../lib/Serveis'
 import TotalPrice from '../TotalPrice'
+import SavePresupost from './SavePresupost'
+import PressupostList from './PressupostList'
 
 export default function Calculadora() {
   return (
@@ -16,9 +18,14 @@ export default function Calculadora() {
         <div className='grid place-items-center my-9 gap-10'>
           <CardList array={serveis}></CardList>
         </div>
-        <TotalPrice></TotalPrice>
+        <div className="flex justify-center items-end">
+          <TotalPrice></TotalPrice>
+        </div>
+        <div className='flex flex-col items-center justify-center'>
+           <SavePresupost />
+           <PressupostList />
+        </div>
       </div>
     </div>
-
   )
 }

@@ -1,33 +1,45 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+
+interface Product {
+  title: string;
+  price: number;
+  pages: number;
+  languages: number;
+  totalPrice: number;
+}
+
+interface Pressupost {
+  name: string,
+  email: string,
+  phoneNumber: number,
+  products: string[],
+  cartPrice: number
+}
 
 interface ProductContextType {
-    product: {
-        price: number;
-        pages: number;
-        languages: number;
-        totalPrice: number;
-    };
-    setProduct: React.Dispatch<React.SetStateAction<{
-        price: number;
-        pages: number;
-        languages: number;
-        totalPrice: number;
-    }>>;
+  cart: Product[];
+  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
+  totalPrice: number;
+  pressupostos: any[];
+  setPressupostos: React.Dispatch<React.SetStateAction<Pressupost[]>>;
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider = ({ children }) => {
-    const [product, setProduct] = useState({
-        price: 0,
-        pages: 0,
-        languages: 0,
-        totalPrice: 0,
-    });
+  const [cart, setCart] = useState<Product[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [pressupostos, setPressupostos] = useState<any[]>([]);
 
-    return (
-        <ProductContext.Provider value={{ product, setProduct }}>
-            {children}
-        </ProductContext.Provider>
-    );
+  useEffect(() => {
+    const total = cart.reduce((acc, product) => acc + product.totalPrice, 0);
+    setTotalPrice(total);
+  }, [cart]);
+
+  
+  return (
+    <ProductContext.Provider value={{ cart, setCart, totalPrice, pressupostos, setPressupostos }}>
+      {children}
+    </ProductContext.Provider>
+  );
 };
