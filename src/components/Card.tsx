@@ -6,6 +6,7 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
   const [isChecked, setIsChecked] = useState(false);
   const [pages, setPages] = useState(0);
   const [languages, setLanguages] = useState(0);
+  const [modal, setModal] = useState({ isOpen: false, heading: '', content: '' });
 
   const handlePagesChange = (e) => {
     const newPages = parseInt(e.target.value) || 0;
@@ -70,8 +71,28 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
     }));
   };
 
+  const handleOpenModal = (type) => {
+    const heading = type === 'pages' ? 'Número de pàgines' : 'Número de llenguatges';
+    const content = type === 'pages' ? 
+      <>
+        <p>Afegeix les pàgines que tindrà el teu projecte.</p>
+        <p>El cost de cada pàgina es de 30€.</p>
+      </>
+      : 
+      <>
+        <p>Afegeix els llenguatges que tindrà el teu projecte.</p>
+        <p>El cost de cada llenguatge es de 30€.</p>
+      </>;
+
+    setModal({ isOpen: true, heading, content });
+  };
+
+  const handleCloseModal = () => {
+    setModal({ isOpen: false, heading: '', content: '' });
+  };
+
   return (
-    <div className={`shadow-lg rounded p-9 w-3/4 border-2 ${isChecked ? 'border-[#5bab8a]' : ''}`}>
+    <div className={`shadow-lg rounded p-9 w-3/4 border-2 ${isChecked ? 'border-primary' : ''}`}>
       <div className='grid grid-cols-3 items-center'>
         <div className='flex justify-start items-center'>
           <div>
@@ -84,7 +105,7 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
         </div>
         <div className='flex justify-end items-center'>
           <input
-            className='mr-3 scale-150 accent-[#5bab8a]'
+            className='mr-3 scale-150 accent-primary'
             type='checkbox'
             checked={isChecked}
             onChange={handleCheckboxChange}
@@ -98,6 +119,12 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
       {isChecked && hasAditionalInputs && (
         <div className='flex flex-col gap-y-2 items-end mt-3'>
           <div className='flex items-center'>
+            <span
+              className='text-xs text-gray-400 font-black border border-gray-400 px-[6px] rounded-full mr-[6px] cursor-pointer'
+              onClick={() => handleOpenModal('pages')}
+            >
+              i
+            </span>
             <label htmlFor="" className='mr-3'>Número de pàgines: </label>
             <button className="flex items-center px-1 h-5 rounded-full border-2 border-gray-400" onClick={() => handleDecrement('pages')}>
               −
@@ -113,6 +140,12 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
             </button>
           </div>
           <div className='flex items-center'>
+            <span
+              className='text-xs text-gray-400 font-black border border-gray-400 px-[6px] rounded-full mr-[6px] cursor-pointer'
+              onClick={() => handleOpenModal('languages')}
+            >
+              i
+            </span>
             <label htmlFor="" className='mr-3'>Número de llenguatges: </label>
             <button className="flex items-center px-1 h-5 rounded-full border-2 border-gray-400" onClick={() => handleDecrement('languages')}>
               −
@@ -125,6 +158,21 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
             />
             <button className="flex items-center px-1 h-5 rounded-full border-2 border-gray-400" onClick={() => handleIncrement('languages')}>
               +
+            </button>
+          </div>
+        </div>
+      )}
+
+      {modal.isOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
+          <div className='bg-white p-6 rounded-lg shadow-lg w-96'>
+            <h2 className='text-xl font-bold mb-4 text-center'>{modal.heading}</h2>
+            <p className='mb-4 text-center'>{modal.content}</p>
+            <button
+              onClick={handleCloseModal}
+              className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-600 block mx-auto'
+            >
+              Cerrar
             </button>
           </div>
         </div>

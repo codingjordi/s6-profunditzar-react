@@ -3,7 +3,7 @@ import { useProduct } from '../hooks/useProduct'
 
 export default function PressupostButton() {
 
-  const { products, cart, setCart, pressupostos, setPressupostos } = useProduct()
+  const { cart, setCart, pressupostos, setPressupostos } = useProduct()
 
   const [userDetails, setUserDetails] = useState({
     name: '',
@@ -94,7 +94,7 @@ export default function PressupostButton() {
         <input className='rounded-md border border-gray-400 py-2 px-2 h-10 w-56 placeholder:text-lg' value={userDetails.name} onChange={handleNameChange} type="text" placeholder='Nom' />
         <input className='rounded-md border border-gray-400 py-2 px-2 h-10 w-56 placeholder:text-lg' value={userDetails.phoneNumber} onChange={handlePhoneNumberChange} type="text" placeholder='Telèfon' />
         <input className='rounded-md border border-gray-400 py-2 px-2 h-10 w-56 placeholder:text-lg' value={userDetails.email} onChange={handleEmailChange} type="text" placeholder='Email' />
-        <button className='bg-[#5bab8a] font-bold text-white rounded-xl px-4 hover:opacity-90' onClick={savePressupost}>Sol·licitar pressupost</button>
+        <button className='bg-primary font-bold text-white rounded-xl px-4 hover:opacity-90' onClick={savePressupost}>Sol·licitar pressupost</button>
       </div>
     </div>
   )
