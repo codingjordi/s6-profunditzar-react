@@ -8,12 +8,13 @@ interface Product {
   totalPrice: number;
 }
 
-interface Pressupost {
+export interface Pressupost {
   name: string,
   email: string,
   phoneNumber: number,
   products: string[],
-  cartPrice: number
+  cartPrice: number,
+  date: number
 }
 
 interface ProductContextType {
@@ -29,14 +30,13 @@ export const ProductContext = createContext<ProductContextType | undefined>(unde
 export const ProductProvider = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [pressupostos, setPressupostos] = useState<any[]>([]);
+  const [pressupostos, setPressupostos] = useState<Pressupost[]>([]);
 
   useEffect(() => {
     const total = cart.reduce((acc, product) => acc + product.totalPrice, 0);
     setTotalPrice(total);
   }, [cart]);
 
-  
   return (
     <ProductContext.Provider value={{ cart, setCart, totalPrice, pressupostos, setPressupostos }}>
       {children}

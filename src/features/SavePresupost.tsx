@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useProduct } from '../hooks/useProduct'
+import TotalPrice from '../TotalPrice';
 
 export default function PressupostButton() {
 
@@ -45,30 +46,13 @@ export default function PressupostButton() {
   // Fem setPressupostos amb el newObj, despres fem setCart([]) per netejar el cart pel següent)
 
   const savePressupost = () => {
-    // Validaciones
-    const isNameValid = /^[a-zA-Z\s]{2,}$/.test(userDetails.name); // Solo letras y mínimo 2 caracteres
-    const isPhoneNumberValid = /^\d{6,}$/.test(userDetails.phoneNumber); // Solo números, mínimo 6 dígitos
-    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userDetails.email); // Formato de email
-  
-    if (!isNameValid) {
-      alert("El nombre debe tener al menos 2 caracteres y no contener números.");
-      return;
-    }
-    if (!isPhoneNumberValid) {
-      alert("El teléfono debe tener al menos 6 números.");
-      return;
-    }
-    if (!isEmailValid) {
-      alert("Por favor, introduce un email válido.");
-      return;
-    }
-  
     const newObj = {
       name: userDetails.name,
       email: userDetails.email,
       phoneNumber: userDetails.phoneNumber,
       products: cartProducts.products,
-      totalPrice: cartProducts.cartPrice
+      totalPrice: cartProducts.cartPrice,
+      date: Date.now()
     };
   
     setPressupostos([
@@ -77,14 +61,16 @@ export default function PressupostButton() {
     ]);
   
     setCart([]);
-
+  
     setUserDetails({
       name: '',
       email: '',
       phoneNumber: ''
-    })
+    });
+  
     console.log(pressupostos);
   };
+  
   
 
   return (

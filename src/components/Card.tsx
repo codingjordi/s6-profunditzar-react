@@ -92,7 +92,7 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
   };
 
   return (
-    <div className={`shadow-lg rounded p-9 w-3/4 border-2 ${isChecked ? 'border-primary' : ''}`}>
+    <div className={`shadow-lg rounded-2xl p-9 w-3/4 border-2 ${isChecked ? 'border-primary' : ''}`}>
       <div className='grid grid-cols-3 items-center'>
         <div className='flex justify-start items-center'>
           <div>
@@ -109,10 +109,10 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
             type='checkbox'
             checked={isChecked}
             onChange={handleCheckboxChange}
-            id='afegir'
+            id={`afegir-${title}`}
             name='afegir'
           />
-          <label htmlFor="" className='text-xl'>Afegir</label>
+          <label htmlFor={`afegir-${title}`} className='text-xl'>Afegir</label>
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import { useProduct } from '../hooks/useProduct';
 export default function PressupostCard({ pressupost }) {   
 
     return (
-        <div className='shadow-lg rounded p-9 w-3/4 border'>
+        <div className='shadow-lg rounded-2xl p-9 w-full border'>
             <div className='grid grid-cols-3 items-center '>
                 <div className='flex justify-start items-center'>
                     <div>
@@ -26,7 +26,7 @@ export default function PressupostCard({ pressupost }) {
                     <div className='text-center'>
                         <p>Total:</p>
                         <p className='text-4xl font-bold'>{pressupost.totalPrice}€</p>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

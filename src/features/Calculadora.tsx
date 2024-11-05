@@ -4,8 +4,13 @@ import { serveis } from '../lib/Serveis'
 import TotalPrice from '../TotalPrice'
 import SavePresupost from './SavePresupost'
 import PressupostList from './PressupostList'
+import { useProduct } from '../hooks/useProduct'
 
 export default function Calculadora() {
+
+
+    const { pressupostos } = useProduct();
+
   return (
     <div>
       <div className='flex justify-center items-center max-w-screen-xl mx-auto h-48 xl:rounded-3xl bg-center hero-img'>
@@ -23,7 +28,7 @@ export default function Calculadora() {
         </div>
         <div className='flex flex-col items-center justify-center'>
            <SavePresupost />
-           <PressupostList />
+           {pressupostos.length !== 0 && <PressupostList />}
         </div>
       </div>
     </div>
