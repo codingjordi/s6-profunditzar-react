@@ -8,8 +8,7 @@ import { useProduct } from '../hooks/useProduct'
 
 export default function Calculadora() {
 
-
-    const { pressupostos } = useProduct();
+  const { pressupostos } = useProduct();
 
   return (
     <div>
@@ -18,17 +17,17 @@ export default function Calculadora() {
           Aconsegueix la millor qualitat
         </p>
       </div>
-
       <div className="max-w-screen-xl mx-auto">
-        <div className='grid place-items-center my-9 gap-10'>
+        <div className='grid place-items-center my-9'>
           <CardList array={serveis}></CardList>
         </div>
-        <div className="flex justify-center items-end">
+        <div className="flex justify-center items-end pt-4 pb-6">
           <TotalPrice></TotalPrice>
         </div>
         <div className='flex flex-col items-center justify-center'>
-           <SavePresupost />
-           {pressupostos.length !== 0 && <PressupostList />}
+          <SavePresupost />
+          <hr className="border-t-2 border-dashed border-gray-400 my-10 w-full" />
+          {pressupostos.length !== 0 && <PressupostList />}
         </div>
       </div>
     </div>
