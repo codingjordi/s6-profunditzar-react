@@ -1,8 +1,12 @@
 import { ProductProvider } from "./context/ProductContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
-import Benvinguda from "./features/Benvinguda";
+import Benvinguda from "./Benvinguda";
 import Calculadora from "./features/Calculadora";
+import 'flowbite/dist/flowbite.css';
+import 'flowbite/dist/flowbite.js';
+
+
 
 export default function App() {
 

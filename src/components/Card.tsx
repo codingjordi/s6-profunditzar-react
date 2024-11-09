@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useProduct } from '../hooks/useProduct';
 
-export default function Card({ title, description, price, hasAditionalInputs }) {
+export default function Card({ title, description, price, hasAditionalInputs, isDiscounted }) {
   const { cart, setCart } = useProduct();
   const [isChecked, setIsChecked] = useState(false);
   const [pages, setPages] = useState(0);
@@ -100,8 +100,9 @@ export default function Card({ title, description, price, hasAditionalInputs }) 
             <p>{description}</p>
           </div>
         </div>
-        <div className='flex justify-center items-center'>
+        <div className='flex flex-col justify-center items-center'>
           <p className='text-4xl font-bold'>{price}€</p>
+          {isDiscounted && <p className='text-green-500 font-semibold'>Estalvia un 20%!</p>}
         </div>
         <div className='flex justify-end items-center'>
           <input

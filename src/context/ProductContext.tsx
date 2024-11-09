@@ -8,21 +8,22 @@ interface Product {
   totalPrice: number;
 }
 
-export interface Pressupost {
-  name: string,
-  email: string,
-  phoneNumber: number,
-  products: string[],
-  cartPrice: number,
-  date: number
+interface Pressupost {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  products: Product[];
+  cartPrice: number;
+  date: number;
 }
 
 interface ProductContextType {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   totalPrice: number;
-  pressupostos: any[];
+  pressupostos: Pressupost[];
   setPressupostos: React.Dispatch<React.SetStateAction<Pressupost[]>>;
+  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -38,7 +39,7 @@ export const ProductProvider = ({ children }) => {
   }, [cart]);
 
   return (
-    <ProductContext.Provider value={{ cart, setCart, totalPrice, pressupostos, setPressupostos }}>
+    <ProductContext.Provider value={{ cart, setCart, totalPrice, setTotalPrice, pressupostos, setPressupostos }}>
       {children}
     </ProductContext.Provider>
   );

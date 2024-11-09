@@ -13,11 +13,6 @@ export default function PressupostList() {
         setSortedPressupostos(pressupostos);
     }, [pressupostos]);
 
-    // useEffect(() => {
-    //     setQuery(query);
-    // }, [query]);
-
-
     const handleSortAbc = () => {
         const sorted = [...pressupostos].sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -43,7 +38,7 @@ export default function PressupostList() {
         }
         setSortedPressupostos(
             pressupostos.filter(pressupost => {
-                return pressupost.name.toLowerCase().includes(e.target.value.toLowerCase())  /* si lo hago con query.toLowerCase no funciona bien*/
+                return pressupost.name.toLowerCase().includes(e.target.value.toLowerCase())  /* si lo hago con query.toLowerCase no funciona bien, por que? tiene que ver con  el ciclo de render*/
             })
         )
     }

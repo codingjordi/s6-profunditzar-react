@@ -17,6 +17,7 @@ export default function Calculadora() {
           Aconsegueix la millor qualitat
         </p>
       </div>
+      
       <div className="max-w-screen-xl mx-auto">
         <div className='grid place-items-center my-9'>
           <CardList array={serveis}></CardList>
@@ -30,6 +31,7 @@ export default function Calculadora() {
           {pressupostos.length !== 0 && <PressupostList />}
         </div>
       </div>
+      
     </div>
   )
 }

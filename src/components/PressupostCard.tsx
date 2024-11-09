@@ -1,7 +1,6 @@
 import React from 'react'
-import { useProduct } from '../hooks/useProduct';
 
-export default function PressupostCard({ pressupost }) {   
+export default function PressupostCard({ pressupost }) {
 
     return (
         <div className='shadow-lg rounded-2xl p-9 w-full border'>
@@ -14,19 +13,22 @@ export default function PressupostCard({ pressupost }) {
                     </div>
                 </div>
                 <div className='flex flex-col justify-center items-center'>
-                    <p>Serveis contractats:</p>
+                    <p className='font-bold underline text-lg'>Serveis contractats</p>
                     <ul>
-                        <li>{pressupost.products}</li>
-                        {/* {object.map(property => {
-                            return <li></li>
-                        })} */}
+                        {pressupost.products.map(product => {
+                            return (
+                            <li className='list-disc font-medium'>
+                                {product.title}
+                            </li>
+                            )
+                        })}
                     </ul>
                 </div>
                 <div className='flex flex-col justify-center items-end'>
                     <div className='text-center'>
                         <p>Total:</p>
-                        <p className='text-4xl font-bold'>{pressupost.totalPrice}€</p>
-                    </div>  
+                        <p className='text-4xl font-bold'>{pressupost.cartPrice}€</p>
+                    </div>
                 </div>
             </div>
         </div>
