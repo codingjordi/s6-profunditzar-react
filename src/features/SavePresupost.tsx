@@ -87,49 +87,51 @@ export default function PressupostButton() {
   };
 
   return (
-    <div className='shadow-2xl rounded my-3 p-9 h-40 w-3/4'>
+    <div className='text-center md:text-left shadow-2xl rounded my-3 p-9 lg:min-h-44 lg:max-h-44 w-3/4'>
       <h2>Demanar pressupost</h2>
-      <div className='flex gap-1 justify-between mt-3'>
+      <div className='w-full lg:flex lg:justify-between gap-1  mt-3'>
 
-        <div>
+        <div className=''>
           <input
-            className='rounded-md border border-gray-400 py-2 px-2 mb-[6px] h-10 w-56 placeholder:text-lg'
+            className=' w-full rounded-md border border-gray-400 py-2 px-2 mb-[6px] placeholder:text-lg'
             value={userDetails.name}
             onChange={handleNameChange}
             type='text'
             placeholder='Nom'
           />
-          {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+          <p className="text-red-500 text-xs h-6">{errors.name}</p>
         </div>
 
-        <div>
+        <div className=''>
           <input
-            className='rounded-md border border-gray-400 py-2 px-2 mb-[6px] h-10 w-56 placeholder:text-lg'
+            className=' w-full rounded-md border border-gray-400 py-2 px-2 mb-[6px]  placeholder:text-lg'
             value={userDetails.phoneNumber}
             onChange={handlePhoneNumberChange}
             type='text'
             placeholder='Telèfon'
           />
-          {errors.phoneNumber && <p className="text-red-500 text-xs">{errors.phoneNumber}</p>}
+          <p className="text-red-500 text-xs h-6" >{errors.phoneNumber}</p>
         </div>
 
-        <div>
+        <div className=''>
           <input
-            className='rounded-md border border-gray-400 py-2 px-2 mb-[6px] h-10 w-56 placeholder:text-lg'
+            className=' w-full rounded-md border border-gray-400 py-2 px-2 mb-[6px] placeholder:text-lg'
             value={userDetails.email}
             onChange={handleEmailChange}
             type='text'
             placeholder='Email'
           />
-          {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+          <p className="text-red-500 text-xs h-6">{errors.email}</p>
         </div>
 
-        <button
-          className='h-10 bg-primary font-bold text-white rounded-xl px-4 hover:opacity-90'
-          onClick={savePressupost}
-        >
-          Sol·licitar pressupost
-        </button>
+        <div className='md:text-center lg:text-left'>
+          <button
+            className='h-12 lg:h-11 leading-[18px] bg-primary font-semibold text-white rounded-xl px-3 hover:opacity-90'
+            onClick={savePressupost}
+          >
+            Sol·licitar pressupost
+          </button>
+        </div>
       </div>
     </div>
   );

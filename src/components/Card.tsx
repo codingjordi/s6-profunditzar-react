@@ -73,12 +73,12 @@ export default function Card({ title, description, price, hasAditionalInputs, is
 
   const handleOpenModal = (type) => {
     const heading = type === 'pages' ? 'Número de pàgines' : 'Número de llenguatges';
-    const content = type === 'pages' ? 
+    const content = type === 'pages' ?
       <>
         <p>Afegeix les pàgines que tindrà el teu projecte.</p>
         <p>El cost de cada pàgina es de 30€.</p>
       </>
-      : 
+      :
       <>
         <p>Afegeix els llenguatges que tindrà el teu projecte.</p>
         <p>El cost de cada llenguatge es de 30€.</p>
@@ -92,21 +92,21 @@ export default function Card({ title, description, price, hasAditionalInputs, is
   };
 
   return (
-    <div className={`shadow-lg rounded-2xl p-9 w-3/4 border-2 ${isChecked ? 'border-primary' : ''}`}>
-      <div className='grid grid-cols-3 items-center'>
-        <div className='flex justify-start items-center'>
-          <div>
+    <div className={`shadow-lg rounded-2xl px-5 py-3 md:p-9 w-3/4 border-2 ${isChecked ? 'border-primary' : ''}`}>
+      <div className='grid md:grid-cols-3 items-center'>
+        <div className='flex text-center justify-center md:justify-start  items-center'>
+          <div className=''>
             <h2 className='text-2xl font-semibold'>{title}</h2>
             <p>{description}</p>
           </div>
         </div>
-        <div className='flex flex-col justify-center items-center'>
+        <div className='min-h-[64px] flex flex-col justify-center items-center ease-in'>
           <p className='text-4xl font-bold'>{price}€</p>
           {isDiscounted && <p className='text-green-500 font-semibold'>Estalvia un 20%!</p>}
         </div>
-        <div className='flex justify-end items-center'>
+        <div className='flex justify-center md:justify-end items-center'>
           <input
-            className='mr-3 scale-150 accent-primary'
+            className='mr-3 scale-150 accent-yellow-900'
             type='checkbox'
             checked={isChecked}
             onChange={handleCheckboxChange}
@@ -162,13 +162,11 @@ export default function Card({ title, description, price, hasAditionalInputs, is
             </button>
           </div>
         </div>
-      )}
-
-      {modal.isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
-          <div className='bg-white p-6 rounded-lg shadow-lg w-96'>
+      )}{modal.isOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-hidden'>
+          <div className='bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md mx-4 sm:mx-0'>
             <h2 className='text-xl font-bold mb-4 text-center'>{modal.heading}</h2>
-            <p className='mb-4 text-center'>{modal.content}</p>
+            <div className='mb-4 text-center'>{modal.content}</div>
             <button
               onClick={handleCloseModal}
               className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-600 block mx-auto'
@@ -178,6 +176,7 @@ export default function Card({ title, description, price, hasAditionalInputs, is
           </div>
         </div>
       )}
+
     </div>
   );
 }

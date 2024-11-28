@@ -10,7 +10,7 @@ export default function Header() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a aria-disabled='true' className="flex items-center space-x-3 rtl:space-x-reverse hover:cursor-default">
             <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-            <p className="text-3xl bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <p className="text-xl font-medium md:text-3xl bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
               Frontender.itacademy
             </p>
           </a>

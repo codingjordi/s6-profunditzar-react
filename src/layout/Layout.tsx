@@ -9,9 +9,11 @@ export default function Layout() {
     return (
         <div>
             <Header />
-            <div style={{ margin: '0 auto' }}>
-                <Outlet />
-            </div>
+            <main>
+                <div className='mx-auto'>
+                    <Outlet />
+                </div>
+            </main>
         </div>
 
     );

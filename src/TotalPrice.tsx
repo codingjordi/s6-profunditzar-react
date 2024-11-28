@@ -7,9 +7,9 @@ export default function TotalPrice() {
   console.log(cart)
 
   return (
-    <div className="flex gap-4 items-baseline justify-end text-3xl font-bold w-3/4">
-      <p>Preu pressuposat: </p>
-      <p className='text-4xl'>{totalPrice}€</p>
+    <div className="flex gap-4 items-baseline justify-end font-bold w-3/4">
+      <p className='text-xl md:text-3xl'>Preu pressuposat: </p>
+      <p className='text-xl md:text-3xl'>{totalPrice}€</p>
     </div>
   );
 }

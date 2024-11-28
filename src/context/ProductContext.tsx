@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-interface Product {
+export interface Product {
   title: string;
   price: number;
   pages: number;
@@ -8,7 +8,7 @@ interface Product {
   totalPrice: number;
 }
 
-interface Pressupost {
+export interface Pressupost {
   name: string;
   email: string;
   phoneNumber: string;
@@ -17,7 +17,7 @@ interface Pressupost {
   date: number;
 }
 
-interface ProductContextType {
+export interface ProductContextType {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   totalPrice: number;
