@@ -70,7 +70,7 @@ budget-calculator/
 5. Open a Pull Request
 
 ## 📄 License
-Private Project
+License ISC
 
 ## 👥 Author
-Jordi (codingjordi)
+Jordi Saperas Castro (codingjordi)
